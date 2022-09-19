@@ -22,16 +22,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 #New Section to display fruityvice api response
-streamlit.header("Fruityvice Fruit Advice!")
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
-
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon" + fruit_choice)
-
-# Making the json data and normalizing it 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# Displaying data in a table 
-streamlit.dataframe(fruityvice_response.json())
-
-import snowflake.connector
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response)
